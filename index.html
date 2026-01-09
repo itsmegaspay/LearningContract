@@ -47,13 +47,64 @@
             opacity: 0.95;
         }
 
+
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 20px 30px;
+            background: #fff;
+            border-bottom: 1px solid #e0e0e0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-btn {
+            padding: 8px 16px;
+            background: #f0f0f0;
+            color: #667eea;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .nav-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
         main {
             padding: 40px 30px;
         }
 
         section {
             margin-bottom: 35px;
+            opacity: 0;
+            animation: fadeIn 0.6s ease forwards;
         }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        section:nth-child(1) { animation-delay: 0.1s; }
+        section:nth-child(2) { animation-delay: 0.2s; }
+        section:nth-child(3) { animation-delay: 0.3s; }
+        section:nth-child(4) { animation-delay: 0.4s; }
 
         section h2 {
             color: #667eea;
@@ -61,6 +112,9 @@
             margin-bottom: 15px;
             padding-bottom: 10px;
             border-bottom: 3px solid #667eea;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         section p {
@@ -107,6 +161,37 @@
             margin: 5px 0;
         }
 
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .scroll-top.show {
+            display: flex;
+        }
+
+
+
         @media (max-width: 768px) {
             body {
                 padding: 10px;
@@ -124,6 +209,16 @@
                 font-size: 1em;
             }
 
+            .nav-buttons {
+                padding: 15px 20px;
+                gap: 10px;
+            }
+
+            .nav-btn {
+                padding: 6px 12px;
+                font-size: 0.85em;
+            }
+
             main {
                 padding: 30px 20px;
             }
@@ -139,6 +234,13 @@
             .signature .name {
                 font-size: 1.2em;
             }
+
+            .scroll-top {
+                width: 45px;
+                height: 45px;
+                bottom: 20px;
+                right: 20px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -146,8 +248,21 @@
                 font-size: 1.7em;
             }
 
+
+
+            .nav-buttons {
+                gap: 8px;
+            }
+
+            .nav-btn {
+                font-size: 0.8em;
+                padding: 6px 10px;
+            }
+
             section h2 {
                 font-size: 1.3em;
+                flex-direction: column;
+                align-items: flex-start;
             }
 
             section p {
@@ -158,6 +273,8 @@
             .signature {
                 text-align: center;
             }
+
+
         }
     </style>
 </head>
@@ -168,30 +285,39 @@
             <p>A Commitment to Professional Growth and Development</p>
         </header>
 
+
+
+        <nav class="nav-buttons">
+            <button class="nav-btn" onclick="scrollToSection('expectations')">Expectations</button>
+            <button class="nav-btn" onclick="scrollToSection('motivations')">Motivations</button>
+            <button class="nav-btn" onclick="scrollToSection('contributions')">Contributions</button>
+            <button class="nav-btn" onclick="scrollToSection('hindrances')">Hindrances</button>
+        </nav>
+
         <main>
             <section id="expectations">
-                <h2>Expectations</h2>
+                <h2><span>📋</span> Expectations</h2>
                 <p>
                     Throughout this learning journey, I expect to gain comprehensive knowledge and practical skills that will enhance my professional capabilities. I anticipate engaging with challenging material that will push me beyond my comfort zone and foster critical thinking. I expect to receive constructive feedback that will guide my development and help me identify areas for improvement. Additionally, I look forward to collaborating with peers and instructors in a supportive learning environment that encourages open dialogue and diverse perspectives. I expect the course to provide relevant, up-to-date content that aligns with industry standards and prepares me for real-world applications. Furthermore, I anticipate developing both technical competencies and soft skills such as communication, time management, and problem-solving abilities that will serve me throughout my career.
                 </p>
             </section>
 
             <section id="motivations">
-                <h2>Motivations</h2>
+                <h2><span>🎯</span> Motivations</h2>
                 <p>
                     My primary motivation for pursuing this learning opportunity stems from a genuine passion for continuous improvement and professional excellence. I am driven by the desire to acquire new skills that will enable me to contribute more effectively to my field and make meaningful impacts in my future career. The rapidly evolving nature of technology and industry practices motivates me to stay current and competitive. I am also inspired by the potential to transform theoretical knowledge into practical solutions that address real-world challenges. Personal growth is a significant motivator as well; I believe that education is a lifelong journey that enriches both professional and personal dimensions of life. Additionally, I am motivated by the opportunity to network with like-minded individuals, share ideas, and learn from diverse experiences. Ultimately, I am committed to excellence and view this learning contract as a crucial step toward achieving my long-term career goals and aspirations.
                 </p>
             </section>
 
             <section id="contributions">
-                <h2>Contributions</h2>
+                <h2><span>🤝</span> Contributions</h2>
                 <p>
                     I am committed to being an active and engaged participant in this learning experience. I will contribute by consistently attending sessions, completing assignments on time, and preparing thoroughly for all activities. I pledge to bring a positive attitude, curiosity, and willingness to explore new concepts and approaches. I will actively participate in discussions, share my perspectives, and respect the viewpoints of others, thereby enriching the collective learning experience. I am prepared to collaborate effectively with peers on group projects, offering my skills and supporting team members in achieving common goals. I will seek help when needed and offer assistance to others who may be struggling, fostering a supportive learning community. Furthermore, I commit to providing constructive feedback during peer reviews and maintaining academic integrity in all my work. I will also take initiative in applying what I learn to practical scenarios and share relevant resources or insights that might benefit the learning community. Through dedication, responsibility, and active engagement, I aim to maximize both my own learning and contribute positively to the learning environment.
                 </p>
             </section>
 
             <section id="hindrances">
-                <h2>Hindrances</h2>
+                <h2><span>⚠️</span> Hindrances</h2>
                 <p>
                     While I am fully committed to this learning journey, I acknowledge several potential challenges that may impact my progress. Time management could present difficulties as I balance learning commitments with other personal and professional responsibilities. There may be moments when complex concepts prove challenging to grasp initially, requiring additional time and effort to master. Technical difficulties, such as limited access to certain resources or tools, might occasionally impede my learning process. Additionally, external factors such as unforeseen personal circumstances or work demands could potentially affect my ability to maintain consistent engagement. I may also encounter moments of self-doubt or frustration when facing particularly difficult material or setbacks. Language barriers or different learning styles might sometimes make it challenging to absorb information as quickly as desired. However, I am committed to proactively addressing these hindrances by seeking support when needed, maintaining open communication with instructors, developing effective study strategies, and remaining flexible and resilient in the face of obstacles. I view these potential challenges not as insurmountable barriers but as opportunities for growth and developing problem-solving skills.
                 </p>
@@ -209,5 +335,72 @@
             <p>Created by: Erwin Gaspay Jr.</p>
         </footer>
     </div>
+
+    <button class="scroll-top" onclick="scrollToTop()">↑</button>
+
+
+
+    <script>
+        // Scroll to top button
+        window.addEventListener('scroll', function() {
+            const scrollBtn = document.querySelector('.scroll-top');
+            if (window.pageYOffset > 300) {
+                scrollBtn.classList.add('show');
+            } else {
+                scrollBtn.classList.remove('show');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Smooth scroll to sections
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            const navHeight = document.querySelector('.nav-buttons').offsetHeight;
+            const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - navHeight - 20;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+
+            // Update active button
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+
+
+        // Highlight active section on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navBtns = document.querySelectorAll('.nav-btn');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= (sectionTop - 200)) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+
+            navBtns.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent.toLowerCase() === currentSection) {
+                    btn.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
